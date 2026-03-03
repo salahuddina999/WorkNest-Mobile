@@ -16,7 +16,6 @@ export type AuthStackParamList = {
 
 export type AppStackParamList = {
   MainTabs: undefined;
-  AdminPanel: undefined;
 };
 
 export type RootStackParamList = {
