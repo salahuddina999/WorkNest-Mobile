@@ -10,6 +10,7 @@ import { isAuthenticated } from "../../utils/authStorage";
 export default function SplashScreen() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { refreshUser } = useAuth();
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -38,7 +39,7 @@ export default function SplashScreen() {
         clearTimeout(timer);
       }
     };
-  }, [navigation]);
+  }, [navigation, refreshUser]);
 
   return (
     <Screen>

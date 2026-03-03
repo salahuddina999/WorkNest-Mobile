@@ -45,14 +45,15 @@ function MainTabs() {
           fontWeight: "600",
         },
         tabBarIcon: ({ color, size }) => {
-          const iconName =
-            route.name === "Home"
-              ? "home-outline"
-              : route.name === "Booking"
-                ? "calendar-outline"
-                : route.name === "Pricing"
-                  ? "pricetag-outline"
-                  : "images-outline";
+          const iconByRoute: Record<keyof MainTabParamList, string> = {
+            Home: "home-outline",
+            Booking: "calendar-outline",
+            MyBookings: "receipt-outline",
+            MyPayments: "card-outline",
+            Pricing: "pricetag-outline",
+            Gallery: "images-outline",
+          };
+          const iconName = iconByRoute[route.name];
 
           return <Ionicons name={iconName} color={color} size={size} />;
         },
@@ -60,6 +61,16 @@ function MainTabs() {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Booking" component={BookingScreen} />
+      <Tab.Screen
+        name="MyBookings"
+        component={MyBookingsScreen}
+        options={{ title: "My Bookings" }}
+      />
+      <Tab.Screen
+        name="MyPayments"
+        component={MyPaymentsScreen}
+        options={{ title: "My Payments" }}
+      />
       <Tab.Screen name="Pricing" component={PricingScreen} />
       {/* <Tab.Screen name="Gallery" component={GalleryScreen} /> */}
       {/* <Tab.Screen name="Gallery" component={GalleryScreen} /> */}
